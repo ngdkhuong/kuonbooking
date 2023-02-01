@@ -1,5 +1,5 @@
 .navbar {
-    height: 60px;
+    height: 50px;
     background-color: #003580;
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@
 
 .navButton {
     margin-left: 20px;
-    border: none;
+    border: 1px solid #0071c2;
     padding: 5px 10px;
     cursor: pointer;
     color: #003580;

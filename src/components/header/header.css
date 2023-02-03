@@ -1,6 +1,6 @@
 .header {
-    background-color: #003580;
-    color: white;
+    background-color: var(--blue);
+    color: var(--white);
     display: flex;
     justify-content: center;
     position: relative;
@@ -10,4 +10,21 @@
     width: 100%;
     max-width: 1024px;
     margin: 20px 0px 100px 0px;
+}
+
+.headerContainer.listMode {
+    margin: 20px 0px 0px 0px;
+}
+
+.headerDesc {
+    margin: 20px 0px;
+}
+
+.headerBtn {
+    background-color: var(--light-blue);
+    color: var(--white);
+    font-weight: 500;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
 }

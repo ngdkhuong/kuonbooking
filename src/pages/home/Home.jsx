@@ -3,6 +3,7 @@ import Header from './../../components/header/Header';
 import './home.css';
 import Featured from './../../components/featured/Featured';
 import PropertyList from '../../components/propertyList/PropertyList';
+import FeaturedProperties from './../../components/featuredProperties/FeaturedProperties';
 
 const Home = () => {
     return (
@@ -13,6 +14,8 @@ const Home = () => {
                 <Featured />
                 <h1 className="homeTitle">Explore Vietnam</h1>
                 <PropertyList />
+                <h1 className="homeTitle">Accommodation that guests love</h1>
+                <FeaturedProperties />
             </div>
         </div>
     );

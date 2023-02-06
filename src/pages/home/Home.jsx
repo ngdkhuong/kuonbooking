@@ -1,9 +1,11 @@
+import './home.css';
 import Navbar from '../../components/navbar/Navbar';
 import Header from './../../components/header/Header';
-import './home.css';
 import Featured from './../../components/featured/Featured';
 import PropertyList from '../../components/propertyList/PropertyList';
 import FeaturedProperties from './../../components/featuredProperties/FeaturedProperties';
+import Mail from './../../components/mail/Mail';
+import Footer from '../../components/footer/Footer';
 
 const Home = () => {
     return (
@@ -16,7 +18,9 @@ const Home = () => {
                 <PropertyList />
                 <h1 className="homeTitle">Accommodation that guests love</h1>
                 <FeaturedProperties />
+                <Mail />
             </div>
+            <Footer />
         </div>
     );
 };

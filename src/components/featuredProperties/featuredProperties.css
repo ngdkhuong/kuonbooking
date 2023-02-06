@@ -9,12 +9,15 @@
 .fpItem {
     flex: 1;
     gap: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .fpImg {
     width: 100%;
     object-fit: cover;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .fpItem > h1 {
@@ -24,4 +27,22 @@
 .fpItem > h2 {
     font-size: 14px;
     font-weight: normal;
+}
+
+.fpItem > span {
+    font-size: 14px;
+}
+
+.fpRating {
+    display: flex;
+}
+
+.fpButton {
+    border: none;
+    border-radius: 4px;
+    background-color: var(--blue);
+    color: var(--white);
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: bold;
 }

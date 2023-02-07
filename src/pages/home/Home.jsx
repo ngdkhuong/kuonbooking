@@ -19,8 +19,8 @@ const Home = () => {
                 <h1 className="homeTitle">Accommodation that guests love</h1>
                 <FeaturedProperties />
                 <Mail />
+                <Footer />
             </div>
-            <Footer />
         </div>
     );
 };

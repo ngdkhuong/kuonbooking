@@ -1,5 +1,6 @@
 // hooks
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // library
 import { faBed, faCalendarDays, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +12,7 @@ import { format } from 'date-fns';
 import './search.css';
 
 const Search = () => {
+    const [destination, setDestination] = useState('');
     const [openDate, setOpenDate] = useState(false);
     const [date, setDate] = useState([
         {
@@ -25,6 +27,9 @@ const Search = () => {
         children: 0,
         room: 1,
     });
+
+    const navigate = useNavigate();
+
     const handleOption = (name, operation) => {
         setOptions((prev) => {
             return {
@@ -34,11 +39,20 @@ const Search = () => {
         });
     };
 
+    const handleSearch = () => {
+        navigate('/list', { state: { destination, date, options } });
+    };
+
     return (
         <div className="headerSearch">
             <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
-                <input type="text" placeholder="Where you want to go?" className="headerSearchInput" />
+                <input
+                    type="text"
+                    placeholder="Where you want to go?"
+                    className="headerSearchInput"
+                    onChange={(e) => setDestination(e.target.value)}
+                />
             </div>
             <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
@@ -116,7 +130,9 @@ const Search = () => {
                 )}
             </div>
             <div className="headerSearchItem">
-                <button className="headerBtn">Find</button>
+                <button className="headerBtn" onClick={handleSearch}>
+                    Find
+                </button>
             </div>
         </div>
     );

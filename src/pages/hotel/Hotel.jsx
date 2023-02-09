@@ -2,9 +2,15 @@ import './hotel.css';
 import Navbar from './../../components/navbar/Navbar';
 import Header from './../../components/header/Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import Mail from './../../components/mail/Mail';
+import Footer from './../../components/footer/Footer';
+import { useState } from 'react';
 
 const Hotel = () => {
+    const [slideNumber, setSlideNumber] = useState(0);
+    const [openImg, setOpenImg] = useState(false);
+
     const photos = [
         {
             src: 'https://cf.bstatic.com/xdata/images/hotel/max500/399697732.jpg?k=f1029e957bafe0c1c7df51b91a7547fdb448b9d7d828f4c0eede237e3695e190&o=&hp=1',
@@ -26,11 +32,38 @@ const Hotel = () => {
         },
     ];
 
+    const handleOpenImg = (index) => {
+        setSlideNumber(index);
+        setOpenImg(true);
+    };
+
+    const handleMove = (direction) => {
+        let newSlideNumber;
+
+        if (direction === 'l') {
+            newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+        } else if (direction === 'r') {
+            newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+        }
+
+        setSlideNumber(newSlideNumber);
+    };
+
     return (
         <div>
             <Navbar />
             <Header type="list" />
             <div className="hotelContainer">
+                {openImg && (
+                    <div className="slider">
+                        <FontAwesomeIcon icon={faCircleXmark} className="close" onClick={() => setOpenImg(false)} />
+                        <FontAwesomeIcon icon={faCircleArrowLeft} className="arrow" onClick={() => handleMove('l')} />
+                        <div className="sliderWrapper">
+                            <img src={photos[slideNumber].src} alt="" className="sliderImg" />
+                        </div>
+                        <FontAwesomeIcon icon={faCircleArrowRight} className="arrow" onClick={() => handleMove('r')} />
+                    </div>
+                )}
                 <div className="hotelWrapper">
                     <button className="bookNow">Book Now!</button>
                     <h1 className="hotelTitle">HANZ Chuong Hotel Dalat 42 Ha Huy Tap</h1>
@@ -43,9 +76,9 @@ const Hotel = () => {
                         Book a stay over VND 450.000 at this property and get a free parking
                     </span>
                     <div className="hotelImages">
-                        {photos.map((photo) => (
+                        {photos.map((photo, index) => (
                             <div className="hotelImgWrapper">
-                                <img src={photo.src} alt="" className="hotelImg" />
+                                <img onClick={() => handleOpenImg(index)} src={photo.src} alt="" className="hotelImg" />
                             </div>
                         ))}
                     </div>
@@ -71,10 +104,12 @@ const Hotel = () => {
                             <h2>
                                 <b>VND 450.672</b> (2 night)
                             </h2>
-                            <button>Reserve or Book Now!</button>
+                            <button>Book Now!</button>
                         </div>
                     </div>
                 </div>
+                <Mail />
+                <Footer />
             </div>
         </div>
     );
